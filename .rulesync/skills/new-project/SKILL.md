@@ -1,12 +1,12 @@
 ---
 name: new-project
-description: 新建一个标准项目（统一放到 ~/Projects、锁定运行时版本、写好 AGENTS.md 与 .gitignore）。当用户说"新建项目 / 建个 xxx 项目 / 起个项目"时使用。
+description: 新建一个标准项目（统一放到 ~/Documents/vibecoding/Projects、锁定运行时版本、写好 AGENTS.md 与 .gitignore）。当用户说"新建项目 / 建个 xxx 项目 / 起个项目"时使用。
 ---
 # 新建标准项目
 
-在 `~/Projects/<项目名>` 下创建，遵循以下步骤：
+在 `~/Documents/vibecoding/Projects/<项目名>` 下创建，遵循以下步骤：
 
-1. `mkdir -p ~/Projects/<名> && cd ~/Projects/<名>`
+1. `mkdir -p ~/Documents/vibecoding/Projects/<名> && cd ~/Documents/vibecoding/Projects/<名>`
 2. `git init`
 3. 锁定运行时版本（按语言取舍），生成 `mise.toml`：
    - Node：`mise use node@24`

@@ -4,7 +4,7 @@ description: 扫描项目构建产物与全局缓存，列出大小供用户确�
 ---
 # 磁盘清理
 
-## 1. 扫描构建产物（在目标根目录，默认 `~/Projects` 或用户指定）
+## 1. 扫描构建产物（在目标根目录，默认 `~/Documents/vibecoding/Projects` 或用户指定）
 ```bash
 find <目录> -type d \( -name node_modules -o -name .venv -o -name target -o -name vendor -o -name build -o -name dist \) -prune -print0 2>/dev/null \
   | xargs -0 du -sh 2>/dev/null | sort -rh | head -30

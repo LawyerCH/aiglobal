@@ -48,7 +48,7 @@
 4. 每次装完依赖，报告"装了什么 + 占多少盘"
 
 **项目流程**
-- **新建项目**：在 `~/Projects/<名>` 下建，`git init` + `mise use` 锁版本 + 最小 `AGENTS.md` + `.gitignore`
+- **新建项目**：在 `~/Documents/vibecoding/Projects/<名>` 下建，`git init` + `mise use` 锁版本 + 最小 `AGENTS.md` + `.gitignore`
 - **克隆陌生项目**：先体检再运行——列出包管理器、**将执行的安装脚本（postinstall 等）**、预估体积、依赖数量、可疑命令 → 给出"可跑/建议隔离"结论
 - **清理**：定期扫描 `node_modules/.venv/target/vendor/build/dist` 及全局缓存（`pnpm store prune` / `uv cache prune`），列大小确认后删
 
