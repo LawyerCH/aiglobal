@@ -1,9 +1,9 @@
 {
   "$schema": "https://github.com/dyoshikawa/rulesync/releases/latest/download/config-schema.json",
   "global": true,
-  "features": ["rules"],
-  "targets": ["opencode", "claudecode"],
-  "delete": true,
+  "features": ["rules", "skills"],
+  "targets": ["opencode", "claudecode", "trae"],
+  "delete": false,
   "verbose": false
 
   // 想借鉴社区规则/技能时，取消下面注释（要求对方仓库按 rules/ 或 skills/ 目录组织）：
