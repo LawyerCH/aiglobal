@@ -5,4 +5,11 @@
   "targets": ["opencode", "claudecode"],
   "delete": true,
   "verbose": false
+
+  // 想借鉴社区规则/技能时，取消下面注释（要求对方仓库按 rules/ 或 skills/ 目录组织）：
+  // 之后运行：cd ~/.aiglobal && rulesync install && rulesync generate
+  // "sources": [
+  //   { "source": "owner/repo", "rules": ["*"] },       // 拉取该仓库 rules/ 下全部规则
+  //   { "source": "owner/repo", "skills": ["name"] }    // 拉取指定技能
+  // ]
 }
