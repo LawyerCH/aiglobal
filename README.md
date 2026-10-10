@@ -89,19 +89,15 @@ airules     # 重新分发规范到所有 agent（兜底，通常不用手动跑
    - 事件：2026-10-10 我启用 skills 分发时，它把 `~/.config/opencode/skills` 与 `~/.claude/skills` 里**别人装的 skill 全清了**（`~/.claude` 是软链，已恢复；`~/.config/opencode` 丢了 11 个网页质量类 skill，决定不恢复）。
    - **现状**：`delete` 已改为 `false`。**在共享目录上永远别开 `delete`。**
 2. **让 AI 推荐工具/包时先核实**：曾经有建议里出现不存在的包（chaff）和极冷门无人验证的包（cleard），照装有风险。
-3. **全局改动先备份**：`~/.shell-backup-20261010/`、`~/.zshrc.bak-*`、`~/.aiglobal/backup/`。
+3. **全局改动先备份**：本次改动完成后，旧的 shell 配置备份已清理；**下次再动全局配置前，记得先备份**。
 
 ---
 
 ## 六、备份与回滚
 
-| 位置 | 内容 |
-|---|---|
-| `~/.shell-backup-20261010/` | 改动前的 6 个 shell 配置文件 |
-| `~/.zshrc.bak-*` | .zshrc 旧版 |
-| `~/.aiglobal/.git` | 这套规范系统的完整版本历史 |
+旧的 shell 配置备份已清理，不再保留。规范系统的版本历史在 `~/.aiglobal/.git`。
 
-回滚某条规则：直接编辑 `~/.aiglobal/.rulesync/rules/` 后 `airules`，或用 git 回退。
+回滚某条规则：编辑 `~/.aiglobal/.rulesync/rules/` 后 `airules`，或用 git 回退。
 
 ---
 
