@@ -99,7 +99,6 @@ airules     # 重新分发规范到所有 agent（兜底，通常不用手动跑
 |---|---|
 | `~/.shell-backup-20261010/` | 改动前的 6 个 shell 配置文件 |
 | `~/.zshrc.bak-*` | .zshrc 旧版 |
-| `~/.aiglobal/backup/` | 旧 `~/.config/opencode/AGENTS.md` |
 | `~/.aiglobal/.git` | 这套规范系统的完整版本历史 |
 
 回滚某条规则：直接编辑 `~/.aiglobal/.rulesync/rules/` 后 `airules`，或用 git 回退。
