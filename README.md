@@ -45,8 +45,11 @@ airules       → 重新分发规范的一句话命令（兜底）
   - `30-配置与语言规范.md`：12-Factor + Google 风格要点
   - `90-维护协议.md`：告诉 AI 怎么维护这套规范本身
   - `overview.md`：原有全局规则（已并入）
-- **分发产物（勿手改）**：`~/.config/opencode/AGENTS.md`、`~/.claude/CLAUDE.md`
-- 生成命令：`cd ~/.aiglobal && rulesync generate`
+- **分发产物（勿手改）**：
+  - `~/.config/opencode/AGENTS.md`（opencode）
+  - `~/.claude/CLAUDE.md`（Claude Code）
+  - `~/.trae-cn/user_rules/rule-aiglobal.md`（**Trae CN** 用户级规则，由桥接脚本聚合）
+- 生成命令：`airules`（内部 = `cd ~/.aiglobal && rulesync generate` + Trae CN 桥接）
 
 ### 3. 密钥（macOS 钥匙串）
 - 8 个密钥存于钥匙串，`service = "shell:<变量名>"`
@@ -55,8 +58,14 @@ airules       → 重新分发规范的一句话命令（兜底）
 
 ### 4. 维护命令
 ```bash
-airules     # 重新分发规范到所有 agent（兜底，通常不用手动跑）
+airules     # 重新分发规范到所有 agent（含 Trae CN 桥接）；兜底用，通常不用手动跑
 ```
+
+> **Trae CN**：rulesync 不支持它的用户级规则（且只认国际版路径 `~/.trae/`）。由 `~/.aiglobal/scripts/sync-trae-cn.sh` 把规则聚合、技能软链到 `~/.trae-cn/`。改完需在 Trae CN **重载窗口**才生效。
+
+### 5. 约定
+- 新项目统一放 `~/Documents/vibecoding/Projects/`
+- 运行时版本用 mise 锁定（项目内 `mise.toml`）
 
 ---
 
