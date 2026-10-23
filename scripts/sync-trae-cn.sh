@@ -26,11 +26,8 @@ AGGREGATED="$TRAE_CN/user_rules/rule-aiglobal.md"
   echo "     改规则请改 ~/.aiglobal/.rulesync/rules/ 后重跑 airules。 -->"
   echo
   # 按文件名排序拼接规则源（去掉 YAML frontmatter），保证与其它 agent 内容一致
-  for f in "$RULES_SRC"/*.md; do
-    [ -f "$f" ] || continue
-    awk 'BEGIN{fm=0} NR==1 && $0=="---"{fm=1; next} fm==1 && $0=="---"{fm=0; next} fm==0{print}' "$f"
-    echo
-  done
+  # 聚合逻辑与 magpie 推送共用 aggregate-rules.sh，两条通道永远同一份文本
+  bash "$SRC/scripts/aggregate-rules.sh" "$RULES_SRC"
 } > "$AGGREGATED"
 
 # 3. 技能：软链到 Trae CN 用户技能目录（已存在的真实目录不覆盖）
@@ -54,3 +51,23 @@ echo "✓ 已同步到 Trae CN：规则 1 篇（$(wc -c < "$AGGREGATED" | tr -d 
 echo "  规则 → $AGGREGATED"
 echo "  技能 → $TRAE_CN/skills/"
 echo "  提示：Trae CN 需重载窗口才会读到新规则。"
+
+# 4. 分发自检：核心硬规则必须真的出现在每个产物里，缺一个就报错退出
+ANCHOR="涉及界面必走设计门"
+missing=0
+for f in "$HOME/.config/opencode/AGENTS.md" "$HOME/.claude/CLAUDE.md" "$AGGREGATED"; do
+  if [ ! -f "$f" ]; then
+    echo "✗ 分发自检：产物不存在 → $f" >&2
+    missing=$((missing + 1))
+    continue
+  fi
+  if ! grep -q "$ANCHOR" "$f"; then
+    echo "✗ 分发自检：缺少界面设计门规则 → $f" >&2
+    missing=$((missing + 1))
+  fi
+done
+if [ "$missing" -gt 0 ]; then
+  echo "✗ 分发自检失败：$missing 个产物缺少核心规则，检查 rules/overview.md 与 15-界面设计.md" >&2
+  exit 1
+fi
+echo "✓ 分发自检通过：界面设计门规则已进入 opencode / Claude Code / Trae CN"
