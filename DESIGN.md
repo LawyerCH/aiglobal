@@ -2,6 +2,10 @@
 
 > 日期：2026-10-10
 > 目标读者：本人（非技术背景，全流程 AI 驱动开发）
+>
+> **2026-10-23 变更：** 本文描述的 rulesync 分发层已移除。
+> 规则源为 `~/.aiglobal/rules/`、技能源为 `~/.aiglobal/skills/`，
+> 分发改由 magpie Library + `scripts/sync.sh` 完成。正文保留为当时的决策记录。
 
 ## 一、背景与目标
 

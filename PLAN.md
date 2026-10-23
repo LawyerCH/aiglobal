@@ -1,10 +1,10 @@
 # AI 开发环境纪律系统 · 实施计划
 
 > **执行方式：** 本计划由当前会话直接执行（native）。
-> **Goal:** 落地 mise 环境基线 + rulesync 统一规则包，让 opencode/Claude Code/Trae 共享一套可自我维护的开发纪律。
-> **Architecture:** rulesync 作为"一处写、多处分发"层；规则源在 `~/.aiglobal/.rulesync/rules/`；mise 管运行时基线。
+> **Goal:** 落地 mise 环境基线 + 统一规则包，让 opencode/Claude Code/Copilot/Trae CN 共享一套可自我维护的开发纪律。
+> **Architecture（2026-10-23 更新）：** 已移除 rulesync。规则源在 `~/.aiglobal/rules/`，技能源在 `~/.aiglobal/skills/`；分发由 magpie Library（Claude/OpenCode）+ `scripts/sync.sh` 直写（Copilot/Trae CN）+ 软链（技能）完成；mise 管运行时基线。
 > **Spec:** `~/.aiglobal/DESIGN.md`
-> **状态：** 全部完成（2026-10-11 勾选）。后续变更走 `90-维护协议.md`，由 AI 改源 + `airules` 分发。
+> **状态：** 全部完成（2026-10-11 勾选）；2026-10-23 完成 rulesync 移除。后续变更走 `90-维护协议.md`，由 AI 改源 + `airules` 分发。
 
 ## 全局约束
 - 语言：Python 3.12、Node 24（mise 管理）
